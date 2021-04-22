@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package MeasureHR ;
+option java_outer_classname = "heartRateImpl";
+
+message rateRequest{
+	string name = 1;
+	int32 patientID = 2;
+}
+
+message rateResponse{
+	int32 bpm = 1;
+}
+
+service measureRate{
+	rpc displayRate(rateRequest) returns (rateResponse){}
+}
+
+message Empty{}
