@@ -1,0 +1,34 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package RecordingsSerive;
+option java_outer_classname = "RecordServiceImpl";
+//import "Patient.proto";
+
+message RecordingServiceResponse {
+ 	enum Status {
+ 		FAILURE = 0;
+ 		SUCCESSFUL =1;
+ 	}
+ Status status = 3;
+ repeated MedicalRecord medicalRecords = 4;//list medical records
+ }
+  message MedicalRecord{
+ 	int32 id = 1;
+ 	string name = 2;
+ 	string DoctorName = 3;
+ }
+ message Patient{
+ 	int32 id = 1;
+ 	string name = 2;
+ 	int32 riskLevel = 3;
+ }
+
+ message RecordingServiceRequest{
+ 	repeated Patient patient =1 ;//take risk level from patient
+
+ }
+service RecordingService{
+rpc RecordRecordingService(stream RecordingServiceRequest) returns (RecordingServiceResponse);//Client side streaming
+}
+
+

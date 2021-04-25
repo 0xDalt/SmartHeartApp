@@ -1,0 +1,29 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package WarningSerive;
+option java_outer_classname = "WarningServiceImpl";
+//import "Patient.proto";
+
+message WarningServiceResponse {
+ 	enum HealthStatus {
+ 		GOOD = 0;
+ 		LOW_RISK =1;
+ 		HIGH_RISK =2;
+ }
+ HealthStatus status = 3;
+ }
+ message Patient{
+ 	int32 id = 1;
+ 	string name = 2;
+ 	int32 riskLevel = 3;
+ }
+
+ message WarningServiceRequest{
+ 	repeated Patient patient =1 ;
+
+ }
+service WarningService{
+rpc RecordWarningService(stream WarningServiceRequest) returns (stream WarningServiceResponse);
+}
+
+
