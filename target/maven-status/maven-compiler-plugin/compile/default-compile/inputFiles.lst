@@ -1,3 +1,4 @@
+C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\LoginServer.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\HeartMeasurement\HeartMeasurementGrpc.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\LogoutRequestOrBuilder.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\ClientGUI\Client.java
@@ -12,9 +13,11 @@ C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\HeartMeasurement\He
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\HeartMeasurement\HeartMeasurementResponseOrBuilder.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\WarningSerive\Patient.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\HeartMeasurement\HeartMeasurementRequest.java
+C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\MyJmdns\ServiceRegistration.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\WarningSerive\WarningServiceRequestOrBuilder.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\HeartMeasurement\Patient.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\LogoutResponseOrBuilder.java
+C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\MyJmdns\ServiceDiscovery.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\UserServiceImpl.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\Empty.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\UserServiceGrpc.java
@@ -29,8 +32,8 @@ C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\WarningSerive\Warni
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\WarningSerive\WarningServiceGrpc.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\RecordingsSerive\RecordServiceImpl.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\WarningSerive\WarningServiceImpl.java
+C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\HeartMeasurement\HeartMeasurementServer.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\LoginRequest.java
-C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\patient.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\WarningSerive\PatientOrBuilder.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\WarningSerive\WarningServiceRequest.java
 C:\Users\Dalts\eclipse-workspace\SmartHeartApp\src\main\java\userLogin\LogoutResponse.java

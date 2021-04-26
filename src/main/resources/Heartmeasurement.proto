@@ -18,6 +18,7 @@ message HeartMeasurementResponse {
  	int32 id = 1;
  	string name = 2;
  	int32 riskLevel = 3;
+ 	int32 bpm = 4;
  }
 
  message HeartMeasurementRequest{

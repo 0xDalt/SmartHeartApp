@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     id_ = 0;
     name_ = "";
     riskLevel_ = 0;
+    bpm_ = 0;
   }
 
   @java.lang.Override
@@ -59,6 +60,11 @@ private static final long serialVersionUID = 0L;
           case 24: {
 
             riskLevel_ = input.readInt32();
+            break;
+          }
+          case 32: {
+
+            bpm_ = input.readInt32();
             break;
           }
           default: {
@@ -145,6 +151,15 @@ private static final long serialVersionUID = 0L;
     return riskLevel_;
   }
 
+  public static final int BPM_FIELD_NUMBER = 4;
+  private int bpm_;
+  /**
+   * <code>int32 bpm = 4;</code>
+   */
+  public int getBpm() {
+    return bpm_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -168,6 +183,9 @@ private static final long serialVersionUID = 0L;
     if (riskLevel_ != 0) {
       output.writeInt32(3, riskLevel_);
     }
+    if (bpm_ != 0) {
+      output.writeInt32(4, bpm_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -187,6 +205,10 @@ private static final long serialVersionUID = 0L;
     if (riskLevel_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, riskLevel_);
+    }
+    if (bpm_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, bpm_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -210,6 +232,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getName());
     result = result && (getRiskLevel()
         == other.getRiskLevel());
+    result = result && (getBpm()
+        == other.getBpm());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -227,6 +251,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + RISKLEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getRiskLevel();
+    hash = (37 * hash) + BPM_FIELD_NUMBER;
+    hash = (53 * hash) + getBpm();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -366,6 +392,8 @@ private static final long serialVersionUID = 0L;
 
       riskLevel_ = 0;
 
+      bpm_ = 0;
+
       return this;
     }
 
@@ -395,6 +423,7 @@ private static final long serialVersionUID = 0L;
       result.id_ = id_;
       result.name_ = name_;
       result.riskLevel_ = riskLevel_;
+      result.bpm_ = bpm_;
       onBuilt();
       return result;
     }
@@ -452,6 +481,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getRiskLevel() != 0) {
         setRiskLevel(other.getRiskLevel());
+      }
+      if (other.getBpm() != 0) {
+        setBpm(other.getBpm());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -602,6 +634,32 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private int bpm_ ;
+    /**
+     * <code>int32 bpm = 4;</code>
+     */
+    public int getBpm() {
+      return bpm_;
+    }
+    /**
+     * <code>int32 bpm = 4;</code>
+     */
+    public Builder setBpm(int value) {
+      
+      bpm_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 bpm = 4;</code>
+     */
+    public Builder clearBpm() {
+      
+      bpm_ = 0;
+      onChanged();
+      return this;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -613,6 +671,11 @@ private static final long serialVersionUID = 0L;
         final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.mergeUnknownFields(unknownFields);
     }
+
+	public Builder setRiskLevel(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
     // @@protoc_insertion_point(builder_scope:HeartMeasurement.Patient)

@@ -42,15 +42,15 @@ public final class HeartMeasureImpl {
       "nt\"\221\001\n\030HeartMeasurementResponse\022A\n\006statu" +
       "s\030\003 \001(\01621.HeartMeasurement.HeartMeasurem" +
       "entResponse.Status\022\013\n\003bpm\030\004 \001(\005\"%\n\006Statu" +
-      "s\022\013\n\007FAILURE\020\000\022\016\n\nSUCCESSFUL\020\001\"6\n\007Patien" +
+      "s\022\013\n\007FAILURE\020\000\022\016\n\nSUCCESSFUL\020\001\"C\n\007Patien" +
       "t\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\triskLevel" +
-      "\030\003 \001(\005\"E\n\027HeartMeasurementRequest\022*\n\007pat" +
-      "ient\030\001 \003(\0132\031.HeartMeasurement.Patient2\203\001" +
-      "\n\020HeartMeasurement\022o\n\026RecordHeartMeasure" +
-      "ment\022).HeartMeasurement.HeartMeasurement" +
-      "Request\032*.HeartMeasurement.HeartMeasurem" +
-      "entResponseB\024B\020HeartMeasureImplP\001b\006proto" +
-      "3"
+      "\030\003 \001(\005\022\013\n\003bpm\030\004 \001(\005\"E\n\027HeartMeasurementR" +
+      "equest\022*\n\007patient\030\001 \003(\0132\031.HeartMeasureme" +
+      "nt.Patient2\203\001\n\020HeartMeasurement\022o\n\026Recor" +
+      "dHeartMeasurement\022).HeartMeasurement.Hea" +
+      "rtMeasurementRequest\032*.HeartMeasurement." +
+      "HeartMeasurementResponseB\024B\020HeartMeasure" +
+      "ImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -75,7 +75,7 @@ public final class HeartMeasureImpl {
     internal_static_HeartMeasurement_Patient_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HeartMeasurement_Patient_descriptor,
-        new java.lang.String[] { "Id", "Name", "RiskLevel", });
+        new java.lang.String[] { "Id", "Name", "RiskLevel", "Bpm", });
     internal_static_HeartMeasurement_HeartMeasurementRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_HeartMeasurement_HeartMeasurementRequest_fieldAccessorTable = new

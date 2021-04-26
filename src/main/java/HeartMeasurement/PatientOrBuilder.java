@@ -26,4 +26,9 @@ public interface PatientOrBuilder extends
    * <code>int32 riskLevel = 3;</code>
    */
   int getRiskLevel();
+
+  /**
+   * <code>int32 bpm = 4;</code>
+   */
+  int getBpm();
 }
