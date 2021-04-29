@@ -1,24 +1,28 @@
 package ClientGUI;
 
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jmdns.ServiceInfo;
 
-import HeartMeasurement.HeartMeasurementGrpc;
-import HeartMeasurement.HeartMeasurementGrpc.HeartMeasurementBlockingStub;
-import HeartMeasurement.HeartMeasurementRequest;
-import HeartMeasurement.HeartMeasurementResponse;
-import MyJmdns.ServiceDiscovery; 
+import HeartBeat.HeartBeatGrpc;
+import HeartBeat.HeartBeatGrpc.HeartBeatBlockingStub;
+import HeartBeat.HeartbeatRequest;
+import HeartBeat.HeartbeatResponse;
+import MyJmdns.ServiceDiscovery;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import userLogin.UserServiceGrpc;
+import userLogin.UserServiceGrpc.UserServiceBlockingStub;
 
 public class Client {
 
 	private static final Logger logger = Logger.getLogger(Client.class.getName());
 
+	private static HeartBeatBlockingStub blockingStub;
 		  
 	public static void main(String[] args) throws Exception {
 		
@@ -27,65 +31,42 @@ public class Client {
 		serviceInfo = ServiceDiscovery.run(service_type);
 		int port = serviceInfo.getPort();
 		String host = "localhost";
-		//int port = 50051;
+		//int port = 50050;
 		
 		ManagedChannel channel = ManagedChannelBuilder.
 				forAddress(host, port)
 				.usePlaintext()
 				.build();
 		
-		HeartMeasurementBlockingStub  blockingStub = HeartMeasurementGrpc.newBlockingStub(channel);
+		blockingStub = HeartBeatGrpc.newBlockingStub(channel);
 				
 		
 	    
-	   try {
-	    	 int bpm = 120;
-	    	 HeartMeasurement.Patient patient = HeartMeasurement.Patient.newBuilder()
-	    		.setId(1).setName("John")
-	    		.setRiskLevel("low")
-	    		.setBpm(bpm)
-	    	 	.build();
-	    	 HeartMeasurementRequest request = HeartMeasurementRequest.newBuilder().addPatient(patient).build();
-	    	 
-	    	 HeartMeasurementResponse response = blockingStub.recordHeartMeasurement(request);
-	    	 
-	    	 logger.info("bpm: " + response.getBpm());
-	    	 
-	    } catch (StatusRuntimeException e) {
-		    logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-		    
-		    return;		
-		    
-	    } finally {
-	    	//shutdown channel
-	    	channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-	    }
-	/*    
+		int bpm=generateHeartBeat();
+		
+	   
 		//Now create second Channel
-	    Thread.sleep(10000); //Sleep here is purely to pause the printout to the console
+	    Thread.sleep(20000); //Sleep here is purely to pause the printout to the console
 		
 		ServiceInfo serviceInfo2;
 		String service_type2 = "_grpc2._tcp.local.";
-		serviceInfo2 = SimpleServiceDiscovery.run(service_type2);
+		serviceInfo2 = ServiceDiscovery.run(service_type2);
 		int port2 = serviceInfo2.getPort();
 		String host2 = "localhost";
-		//int port = 50051;
+		//int port = 50054;
 		
 		ManagedChannel channel2 = ManagedChannelBuilder.
 				forAddress(host2, port2)
 				.usePlaintext()
 				.build();
 		
-		GreeterBlockingStub  blockingStub2 = GreeterGrpc.newBlockingStub(channel2);
+		UserServiceBlockingStub  blockingStub2 = UserServiceGrpc.newBlockingStub(channel2);
+		//patient(bpm);
+		
 		
 	    
 	    try {
-	    	 String name = "Joe and Ann";
-	    	 HelloRequest request = HelloRequest.newBuilder().setName(name).build();
 	    	 
-	    	 HelloReply response = blockingStub2.sayHello(request);
-	    	 
-	    	 logger.info("Greeting: " + response.getMessage());
 	    	 
 	    } catch (StatusRuntimeException e) {
 		    logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
@@ -96,10 +77,54 @@ public class Client {
 	    	//shutdown channel
 	    	channel2.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 	    }
-
 	    
-	    */
-	  }
-	
-	
+	    Thread.sleep(20000);
+	    ServiceInfo serviceInfo3;
+		String service_type3 = "_grpc2._tcp.local.";
+		serviceInfo3 = ServiceDiscovery.run(service_type2);
+		int port3 = serviceInfo2.getPort();
+		String host3 = "localhost";
+		//int port = 50055;
+		
+		ManagedChannel channel3 = ManagedChannelBuilder.
+				forAddress(host3, port3)
+				.usePlaintext()
+				.build();
+		
+		UserServiceBlockingStub  blockingStub3 = UserServiceGrpc.newBlockingStub(channel3);
+		
+	    
+	    try {
+	    	 
+	    	 
+	    } catch (StatusRuntimeException e) {
+		    logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+		    
+		    return;		
+		    
+	    } finally {
+	    	//shutdown channel
+	    	channel2.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+	    }
+	    //add in HeartBeat info.
+	    
+	    
+	}
+	public static int generateHeartBeat() {
+		HeartbeatRequest request = HeartbeatRequest.newBuilder()
+				.setCurrentRate(50).setMin(50).setMax(130).build();
+		HeartbeatResponse temp;
+		try {
+			Iterator<HeartbeatResponse> responces = blockingStub.getRate());
+
+			while(responces.hasNext()){
+				 temp = responces.next();
+				System.out.println(temp.getBpm());				
+			}
+
+		} catch (StatusRuntimeException e) {
+			e.printStackTrace();
+		}
+		return temp.getBpm();
+	}
 }

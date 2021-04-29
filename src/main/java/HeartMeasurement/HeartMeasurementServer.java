@@ -1,6 +1,7 @@
 package HeartMeasurement;
 
 import java.io.IOException;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 
@@ -17,6 +18,12 @@ public class HeartMeasurementServer extends HeartMeasurementImplBase {
 	public static void main(String[] args) {
 		
 		HeartMeasurementServer HeartMeasurementserver = new HeartMeasurementServer();
+		
+		/*Properties prop = HeartMeasurementServer.getProperties();
+	
+		HeartMeasurementServer.registerService(prop);
+		
+		int port = Integer.valueOf(prop.getProperty("service_port"));*/
 		
 		int port = 50053;
 		String service_type = "_grpc._tcp.local.";
@@ -51,17 +58,37 @@ public class HeartMeasurementServer extends HeartMeasurementImplBase {
 	   
 
 	
-	@Override
-	public void recordHeartMeasurement(HeartMeasurementRequest request,  StreamObserver<HeartMeasurementResponse> responseObserver) {
+	private static void registerService(Properties prop) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	private static Properties getProperties() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	
+	/*public void recordHeartMeasurement(HeartMeasurementRequest request1,  StreamObserver<HeartMeasurementResponse> responseObserver1) {
 		    
-		HeartMeasurement.Patient patient= request.getPatient(0);
+		HeartMeasurement.Patient patient= request1.getPatient(0);
 		// HeartMeasurementResponse reply = HeartMeasurementResponse.newBuilder().setBpm(patient.getBpm());
 	     
 		// responseObserver.onNext(reply);
 	     
 	    // responseObserver.onCompleted();
-	}
+	@Override
+	public void recordHeartMeasurement(HeartMeasurementRequest request, StreamObserver<HeartMeasurementResponse> responseObserver){
+		*/
+	
 }
+
 
 
 

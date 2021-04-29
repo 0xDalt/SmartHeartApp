@@ -672,11 +672,6 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-	public Builder setRiskLevel(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
     // @@protoc_insertion_point(builder_scope:HeartMeasurement.Patient)
   }

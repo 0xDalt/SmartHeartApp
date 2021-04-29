@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.logging.Logger;
 
-
+import MyJmdns.ServiceRegistration;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -21,7 +21,12 @@ public class LoginServer extends UserServiceImplBase {
 		
 		LoginServer userServer = new LoginServer();
 		
-		int port = 50011;
+		int port = 50050;
+		String service_type = "_grpc._tcp.local.";
+		String service_name = "GrpcServer";
+		ServiceRegistration ssr = new ServiceRegistration();
+		ssr.run(port, service_type, service_name);
+	
 	    
 		try {
 			Server server = ((ServerBuilder) ServerBuilder.forPort(port))
