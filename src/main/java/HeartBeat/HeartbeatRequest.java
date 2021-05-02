@@ -16,9 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HeartbeatRequest() {
-    currentRate_ = 0;
-    min_ = 0;
-    max_ = 0;
+    patientId_ = 0;
   }
 
   @java.lang.Override
@@ -47,17 +45,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            currentRate_ = input.readInt32();
-            break;
-          }
-          case 16: {
-
-            min_ = input.readInt32();
-            break;
-          }
-          case 24: {
-
-            max_ = input.readInt32();
+            patientId_ = input.readInt32();
             break;
           }
           default: {
@@ -92,31 +80,13 @@ private static final long serialVersionUID = 0L;
             HeartBeat.HeartbeatRequest.class, HeartBeat.HeartbeatRequest.Builder.class);
   }
 
-  public static final int CURRENTRATE_FIELD_NUMBER = 1;
-  private int currentRate_;
+  public static final int PATIENTID_FIELD_NUMBER = 1;
+  private int patientId_;
   /**
-   * <code>int32 currentRate = 1;</code>
+   * <code>int32 patientId = 1;</code>
    */
-  public int getCurrentRate() {
-    return currentRate_;
-  }
-
-  public static final int MIN_FIELD_NUMBER = 2;
-  private int min_;
-  /**
-   * <code>int32 min = 2;</code>
-   */
-  public int getMin() {
-    return min_;
-  }
-
-  public static final int MAX_FIELD_NUMBER = 3;
-  private int max_;
-  /**
-   * <code>int32 max = 3;</code>
-   */
-  public int getMax() {
-    return max_;
+  public int getPatientId() {
+    return patientId_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -133,14 +103,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (currentRate_ != 0) {
-      output.writeInt32(1, currentRate_);
-    }
-    if (min_ != 0) {
-      output.writeInt32(2, min_);
-    }
-    if (max_ != 0) {
-      output.writeInt32(3, max_);
+    if (patientId_ != 0) {
+      output.writeInt32(1, patientId_);
     }
     unknownFields.writeTo(output);
   }
@@ -151,17 +115,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (currentRate_ != 0) {
+    if (patientId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, currentRate_);
-    }
-    if (min_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, min_);
-    }
-    if (max_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, max_);
+        .computeInt32Size(1, patientId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -179,12 +135,8 @@ private static final long serialVersionUID = 0L;
     HeartBeat.HeartbeatRequest other = (HeartBeat.HeartbeatRequest) obj;
 
     boolean result = true;
-    result = result && (getCurrentRate()
-        == other.getCurrentRate());
-    result = result && (getMin()
-        == other.getMin());
-    result = result && (getMax()
-        == other.getMax());
+    result = result && (getPatientId()
+        == other.getPatientId());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -196,12 +148,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CURRENTRATE_FIELD_NUMBER;
-    hash = (53 * hash) + getCurrentRate();
-    hash = (37 * hash) + MIN_FIELD_NUMBER;
-    hash = (53 * hash) + getMin();
-    hash = (37 * hash) + MAX_FIELD_NUMBER;
-    hash = (53 * hash) + getMax();
+    hash = (37 * hash) + PATIENTID_FIELD_NUMBER;
+    hash = (53 * hash) + getPatientId();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -335,11 +283,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      currentRate_ = 0;
-
-      min_ = 0;
-
-      max_ = 0;
+      patientId_ = 0;
 
       return this;
     }
@@ -367,9 +311,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public HeartBeat.HeartbeatRequest buildPartial() {
       HeartBeat.HeartbeatRequest result = new HeartBeat.HeartbeatRequest(this);
-      result.currentRate_ = currentRate_;
-      result.min_ = min_;
-      result.max_ = max_;
+      result.patientId_ = patientId_;
       onBuilt();
       return result;
     }
@@ -418,14 +360,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(HeartBeat.HeartbeatRequest other) {
       if (other == HeartBeat.HeartbeatRequest.getDefaultInstance()) return this;
-      if (other.getCurrentRate() != 0) {
-        setCurrentRate(other.getCurrentRate());
-      }
-      if (other.getMin() != 0) {
-        setMin(other.getMin());
-      }
-      if (other.getMax() != 0) {
-        setMax(other.getMax());
+      if (other.getPatientId() != 0) {
+        setPatientId(other.getPatientId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -456,80 +392,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int currentRate_ ;
+    private int patientId_ ;
     /**
-     * <code>int32 currentRate = 1;</code>
+     * <code>int32 patientId = 1;</code>
      */
-    public int getCurrentRate() {
-      return currentRate_;
+    public int getPatientId() {
+      return patientId_;
     }
     /**
-     * <code>int32 currentRate = 1;</code>
+     * <code>int32 patientId = 1;</code>
      */
-    public Builder setCurrentRate(int value) {
+    public Builder setPatientId(int value) {
       
-      currentRate_ = value;
+      patientId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 currentRate = 1;</code>
+     * <code>int32 patientId = 1;</code>
      */
-    public Builder clearCurrentRate() {
+    public Builder clearPatientId() {
       
-      currentRate_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int min_ ;
-    /**
-     * <code>int32 min = 2;</code>
-     */
-    public int getMin() {
-      return min_;
-    }
-    /**
-     * <code>int32 min = 2;</code>
-     */
-    public Builder setMin(int value) {
-      
-      min_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 min = 2;</code>
-     */
-    public Builder clearMin() {
-      
-      min_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int max_ ;
-    /**
-     * <code>int32 max = 3;</code>
-     */
-    public int getMax() {
-      return max_;
-    }
-    /**
-     * <code>int32 max = 3;</code>
-     */
-    public Builder setMax(int value) {
-      
-      max_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 max = 3;</code>
-     */
-    public Builder clearMax() {
-      
-      max_ = 0;
+      patientId_ = 0;
       onChanged();
       return this;
     }

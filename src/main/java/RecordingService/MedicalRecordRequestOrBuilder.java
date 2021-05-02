@@ -8,46 +8,15 @@ public interface MedicalRecordRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
+   * <code>repeated int32 ids = 1;</code>
    */
-  java.util.List<RecordingService.Patient> 
-      getPatientList();
+  java.util.List<java.lang.Integer> getIdsList();
   /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
+   * <code>repeated int32 ids = 1;</code>
    */
-  RecordingService.Patient getPatient(int index);
+  int getIdsCount();
   /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
+   * <code>repeated int32 ids = 1;</code>
    */
-  int getPatientCount();
-  /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
-   */
-  java.util.List<? extends RecordingService.PatientOrBuilder> 
-      getPatientOrBuilderList();
-  /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
-   */
-  RecordingService.PatientOrBuilder getPatientOrBuilder(
-      int index);
+  int getIds(int index);
 }

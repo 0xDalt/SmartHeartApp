@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package HeartBeat;
+option java_outer_classname = "HeartBeatImpl";
+//import "Patient.proto";
+
+service HeartBeat{
+rpc getRate(HeartbeatRequest) returns (HeartbeatResponse);
+}
+
+message HeartbeatRequest{
+	int32 patientId = 1;
+}
+
+
+message HeartbeatResponse {
+ 	enum Status {
+ 		FAILURE = 0;
+ 		SUCCESSFUL =1;
+ 	}
+ Status status = 1;
+ int32 bpm = 2;
+ }
+

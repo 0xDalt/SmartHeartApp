@@ -44,13 +44,13 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 24: {
+          case 8: {
             int rawValue = input.readEnum();
 
             status_ = rawValue;
             break;
           }
-          case 32: {
+          case 16: {
 
             bpm_ = input.readInt32();
             break;
@@ -185,16 +185,16 @@ private static final long serialVersionUID = 0L;
     // @@protoc_insertion_point(enum_scope:HeartBeat.HeartbeatResponse.Status)
   }
 
-  public static final int STATUS_FIELD_NUMBER = 3;
+  public static final int STATUS_FIELD_NUMBER = 1;
   private int status_;
   /**
-   * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+   * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
    */
   public int getStatusValue() {
     return status_;
   }
   /**
-   * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+   * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
    */
   public HeartBeat.HeartbeatResponse.Status getStatus() {
     @SuppressWarnings("deprecation")
@@ -202,10 +202,10 @@ private static final long serialVersionUID = 0L;
     return result == null ? HeartBeat.HeartbeatResponse.Status.UNRECOGNIZED : result;
   }
 
-  public static final int BPM_FIELD_NUMBER = 4;
+  public static final int BPM_FIELD_NUMBER = 2;
   private int bpm_;
   /**
-   * <code>int32 bpm = 4;</code>
+   * <code>int32 bpm = 2;</code>
    */
   public int getBpm() {
     return bpm_;
@@ -226,10 +226,10 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (status_ != HeartBeat.HeartbeatResponse.Status.FAILURE.getNumber()) {
-      output.writeEnum(3, status_);
+      output.writeEnum(1, status_);
     }
     if (bpm_ != 0) {
-      output.writeInt32(4, bpm_);
+      output.writeInt32(2, bpm_);
     }
     unknownFields.writeTo(output);
   }
@@ -242,11 +242,11 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (status_ != HeartBeat.HeartbeatResponse.Status.FAILURE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(3, status_);
+        .computeEnumSize(1, status_);
     }
     if (bpm_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, bpm_);
+        .computeInt32Size(2, bpm_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -532,13 +532,13 @@ private static final long serialVersionUID = 0L;
 
     private int status_ = 0;
     /**
-     * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+     * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
      */
     public int getStatusValue() {
       return status_;
     }
     /**
-     * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+     * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
      */
     public Builder setStatusValue(int value) {
       status_ = value;
@@ -546,7 +546,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+     * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
      */
     public HeartBeat.HeartbeatResponse.Status getStatus() {
       @SuppressWarnings("deprecation")
@@ -554,7 +554,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? HeartBeat.HeartbeatResponse.Status.UNRECOGNIZED : result;
     }
     /**
-     * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+     * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
      */
     public Builder setStatus(HeartBeat.HeartbeatResponse.Status value) {
       if (value == null) {
@@ -566,7 +566,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+     * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
      */
     public Builder clearStatus() {
       
@@ -577,13 +577,13 @@ private static final long serialVersionUID = 0L;
 
     private int bpm_ ;
     /**
-     * <code>int32 bpm = 4;</code>
+     * <code>int32 bpm = 2;</code>
      */
     public int getBpm() {
       return bpm_;
     }
     /**
-     * <code>int32 bpm = 4;</code>
+     * <code>int32 bpm = 2;</code>
      */
     public Builder setBpm(int value) {
       
@@ -592,7 +592,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 bpm = 4;</code>
+     * <code>int32 bpm = 2;</code>
      */
     public Builder clearBpm() {
       

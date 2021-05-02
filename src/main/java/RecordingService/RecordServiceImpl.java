@@ -25,11 +25,6 @@ public final class RecordServiceImpl {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_RecordingService_MedicalRecord_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_RecordingService_Patient_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_RecordingService_Patient_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_RecordingService_PatientRecordsRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -44,16 +39,6 @@ public final class RecordServiceImpl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_RecordingService_MedicalRecordRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_RecordingService_SetPatientBpmRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_RecordingService_SetPatientBpmRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_RecordingService_PatientResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_RecordingService_PatientResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -64,30 +49,22 @@ public final class RecordServiceImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\026RecordingService.proto\022\020RecordingServi" +
-      "ce\"\267\001\n\025MedicalRecordResponse\022>\n\006status\030\003" +
+      "ce\"\266\001\n\025MedicalRecordResponse\022>\n\006status\030\001" +
       " \001(\0162..RecordingService.MedicalRecordRes" +
-      "ponse.Status\0227\n\016medicalRecords\030\004 \003(\0132\037.R" +
-      "ecordingService.MedicalRecord\"%\n\006Status\022" +
-      "\013\n\007FAILURE\020\000\022\016\n\nSUCCESSFUL\020\001\"=\n\rMedicalR" +
-      "ecord\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\022\n\nDocto" +
-      "rName\030\003 \001(\t\"C\n\007Patient\022\n\n\002id\030\001 \001(\005\022\014\n\004na" +
-      "me\030\002 \001(\t\022\021\n\triskLevel\030\003 \001(\005\022\013\n\003bpm\030\004 \001(\005" +
-      "\"#\n\025PatientRecordsRequest\022\n\n\002id\030\001 \001(\005\"+\n" +
-      "\026PatientRecordsResponse\022\021\n\triskLevel\030\002 \001" +
-      "(\005\"B\n\024MedicalRecordRequest\022*\n\007patient\030\001 " +
-      "\003(\0132\031.RecordingService.Patient\"/\n\024SetPat" +
-      "ientBpmRequest\022\013\n\003bpm\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\"" +
-      "=\n\017PatientResponse\022*\n\007patient\030\002 \001(\0132\031.Re" +
-      "cordingService.Patient2\271\002\n\020RecordingServ" +
-      "ice\022f\n\021getMedicalRecords\022&.RecordingServ" +
-      "ice.MedicalRecordRequest\032\'.RecordingServ" +
-      "ice.MedicalRecordResponse0\001\022h\n\021getPatien" +
-      "tRecords\022\'.RecordingService.PatientRecor" +
-      "dsRequest\032(.RecordingService.PatientReco" +
-      "rdsResponse0\001\022S\n\006setBpm\022&.RecordingServi" +
-      "ce.SetPatientBpmRequest\032!.RecordingServi" +
-      "ce.PatientResponseB\025B\021RecordServiceImplP" +
-      "\001b\006proto3"
+      "ponse.Status\0226\n\rmedicalRecord\030\002 \001(\0132\037.Re" +
+      "cordingService.MedicalRecord\"%\n\006Status\022\013" +
+      "\n\007FAILURE\020\000\022\016\n\nSUCCESSFUL\020\001\")\n\rMedicalRe" +
+      "cord\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\"9\n\025Patien" +
+      "tRecordsRequest\022\017\n\007min_bpm\030\001 \001(\005\022\017\n\007max_" +
+      "bpm\030\002 \001(\005\"$\n\026PatientRecordsResponse\022\n\n\002i" +
+      "d\030\001 \001(\005\"#\n\024MedicalRecordRequest\022\013\n\003ids\030\001" +
+      " \003(\0052\335\001\n\020RecordingService\022f\n\021getMedicalR" +
+      "ecords\022&.RecordingService.MedicalRecordR" +
+      "equest\032\'.RecordingService.MedicalRecordR" +
+      "esponse0\001\022a\n\ngetRecords\022\'.RecordingServi" +
+      "ce.PatientRecordsRequest\032(.RecordingServ" +
+      "ice.PatientRecordsResponse0\001B\025B\021RecordSe" +
+      "rviceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -106,49 +83,31 @@ public final class RecordServiceImpl {
     internal_static_RecordingService_MedicalRecordResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecordingService_MedicalRecordResponse_descriptor,
-        new java.lang.String[] { "Status", "MedicalRecords", });
+        new java.lang.String[] { "Status", "MedicalRecord", });
     internal_static_RecordingService_MedicalRecord_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_RecordingService_MedicalRecord_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecordingService_MedicalRecord_descriptor,
-        new java.lang.String[] { "Id", "Name", "DoctorName", });
-    internal_static_RecordingService_Patient_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_RecordingService_Patient_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_RecordingService_Patient_descriptor,
-        new java.lang.String[] { "Id", "Name", "RiskLevel", "Bpm", });
+        new java.lang.String[] { "Id", "Name", });
     internal_static_RecordingService_PatientRecordsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_RecordingService_PatientRecordsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecordingService_PatientRecordsRequest_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { "MinBpm", "MaxBpm", });
     internal_static_RecordingService_PatientRecordsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_RecordingService_PatientRecordsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecordingService_PatientRecordsResponse_descriptor,
-        new java.lang.String[] { "RiskLevel", });
+        new java.lang.String[] { "Id", });
     internal_static_RecordingService_MedicalRecordRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_RecordingService_MedicalRecordRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecordingService_MedicalRecordRequest_descriptor,
-        new java.lang.String[] { "Patient", });
-    internal_static_RecordingService_SetPatientBpmRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_RecordingService_SetPatientBpmRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_RecordingService_SetPatientBpmRequest_descriptor,
-        new java.lang.String[] { "Bpm", "Id", });
-    internal_static_RecordingService_PatientResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_RecordingService_PatientResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_RecordingService_PatientResponse_descriptor,
-        new java.lang.String[] { "Patient", });
+        new java.lang.String[] { "Ids", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

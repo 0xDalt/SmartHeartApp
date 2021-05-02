@@ -33,17 +33,14 @@ public final class HeartBeatImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017heartbeat.proto\022\tHeartBeat\"A\n\020Heartbea" +
-      "tRequest\022\023\n\013currentRate\030\001 \001(\005\022\013\n\003min\030\002 \001" +
-      "(\005\022\013\n\003max\030\003 \001(\005\"|\n\021HeartbeatResponse\0223\n\006" +
-      "status\030\003 \001(\0162#.HeartBeat.HeartbeatRespon" +
-      "se.Status\022\013\n\003bpm\030\004 \001(\005\"%\n\006Status\022\013\n\007FAIL" +
-      "URE\020\000\022\016\n\nSUCCESSFUL\020\0012\226\001\n\tHeartBeat\022D\n\007G" +
-      "etRate\022\033.HeartBeat.HeartbeatRequest\032\034.He" +
-      "artBeat.HeartbeatResponse\022C\n\006fixBug\022\033.He" +
-      "artBeat.HeartbeatRequest\032\034.HeartBeat.Hea" +
-      "rtbeatResponseB\021B\rHeartBeatImplP\001b\006proto" +
-      "3"
+      "\n\017heartbeat.proto\022\tHeartBeat\"%\n\020Heartbea" +
+      "tRequest\022\021\n\tpatientId\030\001 \001(\005\"|\n\021Heartbeat" +
+      "Response\0223\n\006status\030\001 \001(\0162#.HeartBeat.Hea" +
+      "rtbeatResponse.Status\022\013\n\003bpm\030\002 \001(\005\"%\n\006St" +
+      "atus\022\013\n\007FAILURE\020\000\022\016\n\nSUCCESSFUL\020\0012Q\n\tHea" +
+      "rtBeat\022D\n\007getRate\022\033.HeartBeat.HeartbeatR" +
+      "equest\032\034.HeartBeat.HeartbeatResponseB\021B\r" +
+      "HeartBeatImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -62,7 +59,7 @@ public final class HeartBeatImpl {
     internal_static_HeartBeat_HeartbeatRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HeartBeat_HeartbeatRequest_descriptor,
-        new java.lang.String[] { "CurrentRate", "Min", "Max", });
+        new java.lang.String[] { "PatientId", });
     internal_static_HeartBeat_HeartbeatResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_HeartBeat_HeartbeatResponse_fieldAccessorTable = new

@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private PatientRecordsResponse() {
-    riskLevel_ = 0;
+    id_ = 0;
   }
 
   @java.lang.Override
@@ -43,9 +43,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 16: {
+          case 8: {
 
-            riskLevel_ = input.readInt32();
+            id_ = input.readInt32();
             break;
           }
           default: {
@@ -80,13 +80,13 @@ private static final long serialVersionUID = 0L;
             RecordingService.PatientRecordsResponse.class, RecordingService.PatientRecordsResponse.Builder.class);
   }
 
-  public static final int RISKLEVEL_FIELD_NUMBER = 2;
-  private int riskLevel_;
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_;
   /**
-   * <code>int32 riskLevel = 2;</code>
+   * <code>int32 id = 1;</code>
    */
-  public int getRiskLevel() {
-    return riskLevel_;
+  public int getId() {
+    return id_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -103,8 +103,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (riskLevel_ != 0) {
-      output.writeInt32(2, riskLevel_);
+    if (id_ != 0) {
+      output.writeInt32(1, id_);
     }
     unknownFields.writeTo(output);
   }
@@ -115,9 +115,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (riskLevel_ != 0) {
+    if (id_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, riskLevel_);
+        .computeInt32Size(1, id_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -135,8 +135,8 @@ private static final long serialVersionUID = 0L;
     RecordingService.PatientRecordsResponse other = (RecordingService.PatientRecordsResponse) obj;
 
     boolean result = true;
-    result = result && (getRiskLevel()
-        == other.getRiskLevel());
+    result = result && (getId()
+        == other.getId());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -148,8 +148,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + RISKLEVEL_FIELD_NUMBER;
-    hash = (53 * hash) + getRiskLevel();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -283,7 +283,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      riskLevel_ = 0;
+      id_ = 0;
 
       return this;
     }
@@ -311,7 +311,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public RecordingService.PatientRecordsResponse buildPartial() {
       RecordingService.PatientRecordsResponse result = new RecordingService.PatientRecordsResponse(this);
-      result.riskLevel_ = riskLevel_;
+      result.id_ = id_;
       onBuilt();
       return result;
     }
@@ -360,8 +360,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(RecordingService.PatientRecordsResponse other) {
       if (other == RecordingService.PatientRecordsResponse.getDefaultInstance()) return this;
-      if (other.getRiskLevel() != 0) {
-        setRiskLevel(other.getRiskLevel());
+      if (other.getId() != 0) {
+        setId(other.getId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -392,28 +392,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int riskLevel_ ;
+    private int id_ ;
     /**
-     * <code>int32 riskLevel = 2;</code>
+     * <code>int32 id = 1;</code>
      */
-    public int getRiskLevel() {
-      return riskLevel_;
+    public int getId() {
+      return id_;
     }
     /**
-     * <code>int32 riskLevel = 2;</code>
+     * <code>int32 id = 1;</code>
      */
-    public Builder setRiskLevel(int value) {
+    public Builder setId(int value) {
       
-      riskLevel_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 riskLevel = 2;</code>
+     * <code>int32 id = 1;</code>
      */
-    public Builder clearRiskLevel() {
+    public Builder clearId() {
       
-      riskLevel_ = 0;
+      id_ = 0;
       onChanged();
       return this;
     }

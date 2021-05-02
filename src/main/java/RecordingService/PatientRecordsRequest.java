@@ -16,7 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private PatientRecordsRequest() {
-    id_ = 0;
+    minBpm_ = 0;
+    maxBpm_ = 0;
   }
 
   @java.lang.Override
@@ -45,7 +46,12 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            id_ = input.readInt32();
+            minBpm_ = input.readInt32();
+            break;
+          }
+          case 16: {
+
+            maxBpm_ = input.readInt32();
             break;
           }
           default: {
@@ -80,13 +86,22 @@ private static final long serialVersionUID = 0L;
             RecordingService.PatientRecordsRequest.class, RecordingService.PatientRecordsRequest.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private int id_;
+  public static final int MIN_BPM_FIELD_NUMBER = 1;
+  private int minBpm_;
   /**
-   * <code>int32 id = 1;</code>
+   * <code>int32 min_bpm = 1;</code>
    */
-  public int getId() {
-    return id_;
+  public int getMinBpm() {
+    return minBpm_;
+  }
+
+  public static final int MAX_BPM_FIELD_NUMBER = 2;
+  private int maxBpm_;
+  /**
+   * <code>int32 max_bpm = 2;</code>
+   */
+  public int getMaxBpm() {
+    return maxBpm_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -103,8 +118,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0) {
-      output.writeInt32(1, id_);
+    if (minBpm_ != 0) {
+      output.writeInt32(1, minBpm_);
+    }
+    if (maxBpm_ != 0) {
+      output.writeInt32(2, maxBpm_);
     }
     unknownFields.writeTo(output);
   }
@@ -115,9 +133,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0) {
+    if (minBpm_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, id_);
+        .computeInt32Size(1, minBpm_);
+    }
+    if (maxBpm_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, maxBpm_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -135,8 +157,10 @@ private static final long serialVersionUID = 0L;
     RecordingService.PatientRecordsRequest other = (RecordingService.PatientRecordsRequest) obj;
 
     boolean result = true;
-    result = result && (getId()
-        == other.getId());
+    result = result && (getMinBpm()
+        == other.getMinBpm());
+    result = result && (getMaxBpm()
+        == other.getMaxBpm());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -148,8 +172,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId();
+    hash = (37 * hash) + MIN_BPM_FIELD_NUMBER;
+    hash = (53 * hash) + getMinBpm();
+    hash = (37 * hash) + MAX_BPM_FIELD_NUMBER;
+    hash = (53 * hash) + getMaxBpm();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -283,7 +309,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = 0;
+      minBpm_ = 0;
+
+      maxBpm_ = 0;
 
       return this;
     }
@@ -311,7 +339,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public RecordingService.PatientRecordsRequest buildPartial() {
       RecordingService.PatientRecordsRequest result = new RecordingService.PatientRecordsRequest(this);
-      result.id_ = id_;
+      result.minBpm_ = minBpm_;
+      result.maxBpm_ = maxBpm_;
       onBuilt();
       return result;
     }
@@ -360,8 +389,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(RecordingService.PatientRecordsRequest other) {
       if (other == RecordingService.PatientRecordsRequest.getDefaultInstance()) return this;
-      if (other.getId() != 0) {
-        setId(other.getId());
+      if (other.getMinBpm() != 0) {
+        setMinBpm(other.getMinBpm());
+      }
+      if (other.getMaxBpm() != 0) {
+        setMaxBpm(other.getMaxBpm());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -392,28 +424,54 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int id_ ;
+    private int minBpm_ ;
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int32 min_bpm = 1;</code>
      */
-    public int getId() {
-      return id_;
+    public int getMinBpm() {
+      return minBpm_;
     }
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int32 min_bpm = 1;</code>
      */
-    public Builder setId(int value) {
+    public Builder setMinBpm(int value) {
       
-      id_ = value;
+      minBpm_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int32 min_bpm = 1;</code>
      */
-    public Builder clearId() {
+    public Builder clearMinBpm() {
       
-      id_ = 0;
+      minBpm_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int maxBpm_ ;
+    /**
+     * <code>int32 max_bpm = 2;</code>
+     */
+    public int getMaxBpm() {
+      return maxBpm_;
+    }
+    /**
+     * <code>int32 max_bpm = 2;</code>
+     */
+    public Builder setMaxBpm(int value) {
+      
+      maxBpm_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 max_bpm = 2;</code>
+     */
+    public Builder clearMaxBpm() {
+      
+      maxBpm_ = 0;
       onChanged();
       return this;
     }

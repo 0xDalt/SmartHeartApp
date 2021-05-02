@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private MedicalRecordResponse() {
     status_ = 0;
-    medicalRecords_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -44,19 +43,23 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 24: {
+          case 8: {
             int rawValue = input.readEnum();
 
             status_ = rawValue;
             break;
           }
-          case 34: {
-            if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-              medicalRecords_ = new java.util.ArrayList<RecordingService.MedicalRecord>();
-              mutable_bitField0_ |= 0x00000002;
+          case 18: {
+            RecordingService.MedicalRecord.Builder subBuilder = null;
+            if (medicalRecord_ != null) {
+              subBuilder = medicalRecord_.toBuilder();
             }
-            medicalRecords_.add(
-                input.readMessage(RecordingService.MedicalRecord.parser(), extensionRegistry));
+            medicalRecord_ = input.readMessage(RecordingService.MedicalRecord.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(medicalRecord_);
+              medicalRecord_ = subBuilder.buildPartial();
+            }
+
             break;
           }
           default: {
@@ -74,9 +77,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-        medicalRecords_ = java.util.Collections.unmodifiableList(medicalRecords_);
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -192,17 +192,16 @@ private static final long serialVersionUID = 0L;
     // @@protoc_insertion_point(enum_scope:RecordingService.MedicalRecordResponse.Status)
   }
 
-  private int bitField0_;
-  public static final int STATUS_FIELD_NUMBER = 3;
+  public static final int STATUS_FIELD_NUMBER = 1;
   private int status_;
   /**
-   * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+   * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
    */
   public int getStatusValue() {
     return status_;
   }
   /**
-   * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+   * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
    */
   public RecordingService.MedicalRecordResponse.Status getStatus() {
     @SuppressWarnings("deprecation")
@@ -210,59 +209,37 @@ private static final long serialVersionUID = 0L;
     return result == null ? RecordingService.MedicalRecordResponse.Status.UNRECOGNIZED : result;
   }
 
-  public static final int MEDICALRECORDS_FIELD_NUMBER = 4;
-  private java.util.List<RecordingService.MedicalRecord> medicalRecords_;
+  public static final int MEDICALRECORD_FIELD_NUMBER = 2;
+  private RecordingService.MedicalRecord medicalRecord_;
   /**
    * <pre>
    *list medical records
    * </pre>
    *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+   * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
    */
-  public java.util.List<RecordingService.MedicalRecord> getMedicalRecordsList() {
-    return medicalRecords_;
+  public boolean hasMedicalRecord() {
+    return medicalRecord_ != null;
   }
   /**
    * <pre>
    *list medical records
    * </pre>
    *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+   * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
    */
-  public java.util.List<? extends RecordingService.MedicalRecordOrBuilder> 
-      getMedicalRecordsOrBuilderList() {
-    return medicalRecords_;
+  public RecordingService.MedicalRecord getMedicalRecord() {
+    return medicalRecord_ == null ? RecordingService.MedicalRecord.getDefaultInstance() : medicalRecord_;
   }
   /**
    * <pre>
    *list medical records
    * </pre>
    *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+   * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
    */
-  public int getMedicalRecordsCount() {
-    return medicalRecords_.size();
-  }
-  /**
-   * <pre>
-   *list medical records
-   * </pre>
-   *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-   */
-  public RecordingService.MedicalRecord getMedicalRecords(int index) {
-    return medicalRecords_.get(index);
-  }
-  /**
-   * <pre>
-   *list medical records
-   * </pre>
-   *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-   */
-  public RecordingService.MedicalRecordOrBuilder getMedicalRecordsOrBuilder(
-      int index) {
-    return medicalRecords_.get(index);
+  public RecordingService.MedicalRecordOrBuilder getMedicalRecordOrBuilder() {
+    return getMedicalRecord();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -280,10 +257,10 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (status_ != RecordingService.MedicalRecordResponse.Status.FAILURE.getNumber()) {
-      output.writeEnum(3, status_);
+      output.writeEnum(1, status_);
     }
-    for (int i = 0; i < medicalRecords_.size(); i++) {
-      output.writeMessage(4, medicalRecords_.get(i));
+    if (medicalRecord_ != null) {
+      output.writeMessage(2, getMedicalRecord());
     }
     unknownFields.writeTo(output);
   }
@@ -296,11 +273,11 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (status_ != RecordingService.MedicalRecordResponse.Status.FAILURE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(3, status_);
+        .computeEnumSize(1, status_);
     }
-    for (int i = 0; i < medicalRecords_.size(); i++) {
+    if (medicalRecord_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, medicalRecords_.get(i));
+        .computeMessageSize(2, getMedicalRecord());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -319,8 +296,11 @@ private static final long serialVersionUID = 0L;
 
     boolean result = true;
     result = result && status_ == other.status_;
-    result = result && getMedicalRecordsList()
-        .equals(other.getMedicalRecordsList());
+    result = result && (hasMedicalRecord() == other.hasMedicalRecord());
+    if (hasMedicalRecord()) {
+      result = result && getMedicalRecord()
+          .equals(other.getMedicalRecord());
+    }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -334,9 +314,9 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + STATUS_FIELD_NUMBER;
     hash = (53 * hash) + status_;
-    if (getMedicalRecordsCount() > 0) {
-      hash = (37 * hash) + MEDICALRECORDS_FIELD_NUMBER;
-      hash = (53 * hash) + getMedicalRecordsList().hashCode();
+    if (hasMedicalRecord()) {
+      hash = (37 * hash) + MEDICALRECORD_FIELD_NUMBER;
+      hash = (53 * hash) + getMedicalRecord().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -466,7 +446,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getMedicalRecordsFieldBuilder();
       }
     }
     @java.lang.Override
@@ -474,11 +453,11 @@ private static final long serialVersionUID = 0L;
       super.clear();
       status_ = 0;
 
-      if (medicalRecordsBuilder_ == null) {
-        medicalRecords_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+      if (medicalRecordBuilder_ == null) {
+        medicalRecord_ = null;
       } else {
-        medicalRecordsBuilder_.clear();
+        medicalRecord_ = null;
+        medicalRecordBuilder_ = null;
       }
       return this;
     }
@@ -506,19 +485,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public RecordingService.MedicalRecordResponse buildPartial() {
       RecordingService.MedicalRecordResponse result = new RecordingService.MedicalRecordResponse(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       result.status_ = status_;
-      if (medicalRecordsBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          medicalRecords_ = java.util.Collections.unmodifiableList(medicalRecords_);
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.medicalRecords_ = medicalRecords_;
+      if (medicalRecordBuilder_ == null) {
+        result.medicalRecord_ = medicalRecord_;
       } else {
-        result.medicalRecords_ = medicalRecordsBuilder_.build();
+        result.medicalRecord_ = medicalRecordBuilder_.build();
       }
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -570,31 +542,8 @@ private static final long serialVersionUID = 0L;
       if (other.status_ != 0) {
         setStatusValue(other.getStatusValue());
       }
-      if (medicalRecordsBuilder_ == null) {
-        if (!other.medicalRecords_.isEmpty()) {
-          if (medicalRecords_.isEmpty()) {
-            medicalRecords_ = other.medicalRecords_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureMedicalRecordsIsMutable();
-            medicalRecords_.addAll(other.medicalRecords_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.medicalRecords_.isEmpty()) {
-          if (medicalRecordsBuilder_.isEmpty()) {
-            medicalRecordsBuilder_.dispose();
-            medicalRecordsBuilder_ = null;
-            medicalRecords_ = other.medicalRecords_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-            medicalRecordsBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getMedicalRecordsFieldBuilder() : null;
-          } else {
-            medicalRecordsBuilder_.addAllMessages(other.medicalRecords_);
-          }
-        }
+      if (other.hasMedicalRecord()) {
+        mergeMedicalRecord(other.getMedicalRecord());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -624,17 +573,16 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
     private int status_ = 0;
     /**
-     * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+     * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
      */
     public int getStatusValue() {
       return status_;
     }
     /**
-     * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+     * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
      */
     public Builder setStatusValue(int value) {
       status_ = value;
@@ -642,7 +590,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+     * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
      */
     public RecordingService.MedicalRecordResponse.Status getStatus() {
       @SuppressWarnings("deprecation")
@@ -650,7 +598,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? RecordingService.MedicalRecordResponse.Status.UNRECOGNIZED : result;
     }
     /**
-     * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+     * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
      */
     public Builder setStatus(RecordingService.MedicalRecordResponse.Status value) {
       if (value == null) {
@@ -662,7 +610,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+     * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
      */
     public Builder clearStatus() {
       
@@ -671,79 +619,51 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<RecordingService.MedicalRecord> medicalRecords_ =
-      java.util.Collections.emptyList();
-    private void ensureMedicalRecordsIsMutable() {
-      if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-        medicalRecords_ = new java.util.ArrayList<RecordingService.MedicalRecord>(medicalRecords_);
-        bitField0_ |= 0x00000002;
-       }
+    private RecordingService.MedicalRecord medicalRecord_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        RecordingService.MedicalRecord, RecordingService.MedicalRecord.Builder, RecordingService.MedicalRecordOrBuilder> medicalRecordBuilder_;
+    /**
+     * <pre>
+     *list medical records
+     * </pre>
+     *
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
+     */
+    public boolean hasMedicalRecord() {
+      return medicalRecordBuilder_ != null || medicalRecord_ != null;
     }
+    /**
+     * <pre>
+     *list medical records
+     * </pre>
+     *
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
+     */
+    public RecordingService.MedicalRecord getMedicalRecord() {
+      if (medicalRecordBuilder_ == null) {
+        return medicalRecord_ == null ? RecordingService.MedicalRecord.getDefaultInstance() : medicalRecord_;
+      } else {
+        return medicalRecordBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     *list medical records
+     * </pre>
+     *
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
+     */
+    public Builder setMedicalRecord(RecordingService.MedicalRecord value) {
+      if (medicalRecordBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        medicalRecord_ = value;
+        onChanged();
+      } else {
+        medicalRecordBuilder_.setMessage(value);
+      }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        RecordingService.MedicalRecord, RecordingService.MedicalRecord.Builder, RecordingService.MedicalRecordOrBuilder> medicalRecordsBuilder_;
-
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public java.util.List<RecordingService.MedicalRecord> getMedicalRecordsList() {
-      if (medicalRecordsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(medicalRecords_);
-      } else {
-        return medicalRecordsBuilder_.getMessageList();
-      }
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public int getMedicalRecordsCount() {
-      if (medicalRecordsBuilder_ == null) {
-        return medicalRecords_.size();
-      } else {
-        return medicalRecordsBuilder_.getCount();
-      }
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public RecordingService.MedicalRecord getMedicalRecords(int index) {
-      if (medicalRecordsBuilder_ == null) {
-        return medicalRecords_.get(index);
-      } else {
-        return medicalRecordsBuilder_.getMessage(index);
-      }
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public Builder setMedicalRecords(
-        int index, RecordingService.MedicalRecord value) {
-      if (medicalRecordsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureMedicalRecordsIsMutable();
-        medicalRecords_.set(index, value);
-        onChanged();
-      } else {
-        medicalRecordsBuilder_.setMessage(index, value);
-      }
       return this;
     }
     /**
@@ -751,76 +671,17 @@ private static final long serialVersionUID = 0L;
      *list medical records
      * </pre>
      *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
      */
-    public Builder setMedicalRecords(
-        int index, RecordingService.MedicalRecord.Builder builderForValue) {
-      if (medicalRecordsBuilder_ == null) {
-        ensureMedicalRecordsIsMutable();
-        medicalRecords_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        medicalRecordsBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public Builder addMedicalRecords(RecordingService.MedicalRecord value) {
-      if (medicalRecordsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureMedicalRecordsIsMutable();
-        medicalRecords_.add(value);
-        onChanged();
-      } else {
-        medicalRecordsBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public Builder addMedicalRecords(
-        int index, RecordingService.MedicalRecord value) {
-      if (medicalRecordsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureMedicalRecordsIsMutable();
-        medicalRecords_.add(index, value);
-        onChanged();
-      } else {
-        medicalRecordsBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public Builder addMedicalRecords(
+    public Builder setMedicalRecord(
         RecordingService.MedicalRecord.Builder builderForValue) {
-      if (medicalRecordsBuilder_ == null) {
-        ensureMedicalRecordsIsMutable();
-        medicalRecords_.add(builderForValue.build());
+      if (medicalRecordBuilder_ == null) {
+        medicalRecord_ = builderForValue.build();
         onChanged();
       } else {
-        medicalRecordsBuilder_.addMessage(builderForValue.build());
+        medicalRecordBuilder_.setMessage(builderForValue.build());
       }
+
       return this;
     }
     /**
@@ -828,17 +689,21 @@ private static final long serialVersionUID = 0L;
      *list medical records
      * </pre>
      *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
      */
-    public Builder addMedicalRecords(
-        int index, RecordingService.MedicalRecord.Builder builderForValue) {
-      if (medicalRecordsBuilder_ == null) {
-        ensureMedicalRecordsIsMutable();
-        medicalRecords_.add(index, builderForValue.build());
+    public Builder mergeMedicalRecord(RecordingService.MedicalRecord value) {
+      if (medicalRecordBuilder_ == null) {
+        if (medicalRecord_ != null) {
+          medicalRecord_ =
+            RecordingService.MedicalRecord.newBuilder(medicalRecord_).mergeFrom(value).buildPartial();
+        } else {
+          medicalRecord_ = value;
+        }
         onChanged();
       } else {
-        medicalRecordsBuilder_.addMessage(index, builderForValue.build());
+        medicalRecordBuilder_.mergeFrom(value);
       }
+
       return this;
     }
     /**
@@ -846,18 +711,17 @@ private static final long serialVersionUID = 0L;
      *list medical records
      * </pre>
      *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
      */
-    public Builder addAllMedicalRecords(
-        java.lang.Iterable<? extends RecordingService.MedicalRecord> values) {
-      if (medicalRecordsBuilder_ == null) {
-        ensureMedicalRecordsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, medicalRecords_);
+    public Builder clearMedicalRecord() {
+      if (medicalRecordBuilder_ == null) {
+        medicalRecord_ = null;
         onChanged();
       } else {
-        medicalRecordsBuilder_.addAllMessages(values);
+        medicalRecord_ = null;
+        medicalRecordBuilder_ = null;
       }
+
       return this;
     }
     /**
@@ -865,58 +729,26 @@ private static final long serialVersionUID = 0L;
      *list medical records
      * </pre>
      *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
      */
-    public Builder clearMedicalRecords() {
-      if (medicalRecordsBuilder_ == null) {
-        medicalRecords_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
+    public RecordingService.MedicalRecord.Builder getMedicalRecordBuilder() {
+      
+      onChanged();
+      return getMedicalRecordFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     *list medical records
+     * </pre>
+     *
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
+     */
+    public RecordingService.MedicalRecordOrBuilder getMedicalRecordOrBuilder() {
+      if (medicalRecordBuilder_ != null) {
+        return medicalRecordBuilder_.getMessageOrBuilder();
       } else {
-        medicalRecordsBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public Builder removeMedicalRecords(int index) {
-      if (medicalRecordsBuilder_ == null) {
-        ensureMedicalRecordsIsMutable();
-        medicalRecords_.remove(index);
-        onChanged();
-      } else {
-        medicalRecordsBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public RecordingService.MedicalRecord.Builder getMedicalRecordsBuilder(
-        int index) {
-      return getMedicalRecordsFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public RecordingService.MedicalRecordOrBuilder getMedicalRecordsOrBuilder(
-        int index) {
-      if (medicalRecordsBuilder_ == null) {
-        return medicalRecords_.get(index);  } else {
-        return medicalRecordsBuilder_.getMessageOrBuilder(index);
+        return medicalRecord_ == null ?
+            RecordingService.MedicalRecord.getDefaultInstance() : medicalRecord_;
       }
     }
     /**
@@ -924,63 +756,20 @@ private static final long serialVersionUID = 0L;
      *list medical records
      * </pre>
      *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+     * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
      */
-    public java.util.List<? extends RecordingService.MedicalRecordOrBuilder> 
-         getMedicalRecordsOrBuilderList() {
-      if (medicalRecordsBuilder_ != null) {
-        return medicalRecordsBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(medicalRecords_);
-      }
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public RecordingService.MedicalRecord.Builder addMedicalRecordsBuilder() {
-      return getMedicalRecordsFieldBuilder().addBuilder(
-          RecordingService.MedicalRecord.getDefaultInstance());
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public RecordingService.MedicalRecord.Builder addMedicalRecordsBuilder(
-        int index) {
-      return getMedicalRecordsFieldBuilder().addBuilder(
-          index, RecordingService.MedicalRecord.getDefaultInstance());
-    }
-    /**
-     * <pre>
-     *list medical records
-     * </pre>
-     *
-     * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-     */
-    public java.util.List<RecordingService.MedicalRecord.Builder> 
-         getMedicalRecordsBuilderList() {
-      return getMedicalRecordsFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilderV3<
         RecordingService.MedicalRecord, RecordingService.MedicalRecord.Builder, RecordingService.MedicalRecordOrBuilder> 
-        getMedicalRecordsFieldBuilder() {
-      if (medicalRecordsBuilder_ == null) {
-        medicalRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getMedicalRecordFieldBuilder() {
+      if (medicalRecordBuilder_ == null) {
+        medicalRecordBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             RecordingService.MedicalRecord, RecordingService.MedicalRecord.Builder, RecordingService.MedicalRecordOrBuilder>(
-                medicalRecords_,
-                ((bitField0_ & 0x00000002) == 0x00000002),
+                getMedicalRecord(),
                 getParentForChildren(),
                 isClean());
-        medicalRecords_ = null;
+        medicalRecord_ = null;
       }
-      return medicalRecordsBuilder_;
+      return medicalRecordBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

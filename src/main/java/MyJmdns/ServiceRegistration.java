@@ -6,49 +6,44 @@ import java.net.UnknownHostException;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
- 
 
 public class ServiceRegistration {
 
 	public void run(int port, String service_type, String service_name) {
 		// TODO Auto-generated method stub
-		
-	
 
-		//get a jMDNS instance
+		// get a jMDNS instance
 		try {
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
-			
+
 			/*
 			 * service information
 			 */
-			
-			
-			//registering a http server					
+
+			// registering a http server
 			int service_port = port;
 			String service_desc = " jmDNS Instance Initalised";
-				
-			
-			//Create ServiceInfo - 
-			//use the factory method to create the object			
+
+			// Create ServiceInfo -
+			// use the factory method to create the object
 			ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_desc);
-			
+
 			/*
 			 * register the service
 			 */
-			
+
 			jmdns.registerService(serviceInfo);
-			
-			System.out.printf("registering service with type: %s and name: %s on port %d ", service_type, service_name, service_port);
-			
-			//sleep for 10 seconds
+
+			System.out.printf("registering service with type: %s and name: %s on port %d ", service_type, service_name,
+					service_port);
+
+			// sleep for 10 seconds
 			Thread.sleep(10000);
 			System.out.println("\nService Registered");
-			
-			//unregister the services
-			//jmdns.unregisterAllServices();   
-			
-			
+
+			// unregister the services
+			// jmdns.unregisterAllServices();
+
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -21,14 +21,4 @@ public interface MedicalRecordOrBuilder extends
    */
   com.google.protobuf.ByteString
       getNameBytes();
-
-  /**
-   * <code>string DoctorName = 3;</code>
-   */
-  java.lang.String getDoctorName();
-  /**
-   * <code>string DoctorName = 3;</code>
-   */
-  com.google.protobuf.ByteString
-      getDoctorNameBytes();
 }

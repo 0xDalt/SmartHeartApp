@@ -8,7 +8,7 @@ public interface PatientRecordsResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 riskLevel = 2;</code>
+   * <code>int32 id = 1;</code>
    */
-  int getRiskLevel();
+  int getId();
 }

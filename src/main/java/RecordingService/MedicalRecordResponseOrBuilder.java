@@ -8,11 +8,11 @@ public interface MedicalRecordResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+   * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
    */
   int getStatusValue();
   /**
-   * <code>.RecordingService.MedicalRecordResponse.Status status = 3;</code>
+   * <code>.RecordingService.MedicalRecordResponse.Status status = 1;</code>
    */
   RecordingService.MedicalRecordResponse.Status getStatus();
 
@@ -21,42 +21,23 @@ public interface MedicalRecordResponseOrBuilder extends
    *list medical records
    * </pre>
    *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+   * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
    */
-  java.util.List<RecordingService.MedicalRecord> 
-      getMedicalRecordsList();
+  boolean hasMedicalRecord();
   /**
    * <pre>
    *list medical records
    * </pre>
    *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+   * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
    */
-  RecordingService.MedicalRecord getMedicalRecords(int index);
+  RecordingService.MedicalRecord getMedicalRecord();
   /**
    * <pre>
    *list medical records
    * </pre>
    *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
+   * <code>.RecordingService.MedicalRecord medicalRecord = 2;</code>
    */
-  int getMedicalRecordsCount();
-  /**
-   * <pre>
-   *list medical records
-   * </pre>
-   *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-   */
-  java.util.List<? extends RecordingService.MedicalRecordOrBuilder> 
-      getMedicalRecordsOrBuilderList();
-  /**
-   * <pre>
-   *list medical records
-   * </pre>
-   *
-   * <code>repeated .RecordingService.MedicalRecord medicalRecords = 4;</code>
-   */
-  RecordingService.MedicalRecordOrBuilder getMedicalRecordsOrBuilder(
-      int index);
+  RecordingService.MedicalRecordOrBuilder getMedicalRecordOrBuilder();
 }

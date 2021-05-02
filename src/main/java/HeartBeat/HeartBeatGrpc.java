@@ -31,7 +31,7 @@ public final class HeartBeatGrpc {
       HeartBeat.HeartbeatResponse> getGetRateMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetRate",
+      fullMethodName = SERVICE_NAME + '/' + "getRate",
       requestType = HeartBeat.HeartbeatRequest.class,
       responseType = HeartBeat.HeartbeatResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
@@ -45,50 +45,18 @@ public final class HeartBeatGrpc {
               io.grpc.MethodDescriptor.<HeartBeat.HeartbeatRequest, HeartBeat.HeartbeatResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "HeartBeat.HeartBeat", "GetRate"))
+                  "HeartBeat.HeartBeat", "getRate"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   HeartBeat.HeartbeatRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   HeartBeat.HeartbeatResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new HeartBeatMethodDescriptorSupplier("GetRate"))
+                  .setSchemaDescriptor(new HeartBeatMethodDescriptorSupplier("getRate"))
                   .build();
           }
         }
      }
      return getGetRateMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<HeartBeat.HeartbeatRequest,
-      HeartBeat.HeartbeatResponse> getFixBugMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "fixBug",
-      requestType = HeartBeat.HeartbeatRequest.class,
-      responseType = HeartBeat.HeartbeatResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<HeartBeat.HeartbeatRequest,
-      HeartBeat.HeartbeatResponse> getFixBugMethod() {
-    io.grpc.MethodDescriptor<HeartBeat.HeartbeatRequest, HeartBeat.HeartbeatResponse> getFixBugMethod;
-    if ((getFixBugMethod = HeartBeatGrpc.getFixBugMethod) == null) {
-      synchronized (HeartBeatGrpc.class) {
-        if ((getFixBugMethod = HeartBeatGrpc.getFixBugMethod) == null) {
-          HeartBeatGrpc.getFixBugMethod = getFixBugMethod = 
-              io.grpc.MethodDescriptor.<HeartBeat.HeartbeatRequest, HeartBeat.HeartbeatResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "HeartBeat.HeartBeat", "fixBug"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  HeartBeat.HeartbeatRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  HeartBeat.HeartbeatResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new HeartBeatMethodDescriptorSupplier("fixBug"))
-                  .build();
-          }
-        }
-     }
-     return getFixBugMethod;
   }
 
   /**
@@ -125,13 +93,6 @@ public final class HeartBeatGrpc {
       asyncUnimplementedUnaryCall(getGetRateMethod(), responseObserver);
     }
 
-    /**
-     */
-    public void fixBug(HeartBeat.HeartbeatRequest request,
-        io.grpc.stub.StreamObserver<HeartBeat.HeartbeatResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getFixBugMethod(), responseObserver);
-    }
-
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -141,13 +102,6 @@ public final class HeartBeatGrpc {
                 HeartBeat.HeartbeatRequest,
                 HeartBeat.HeartbeatResponse>(
                   this, METHODID_GET_RATE)))
-          .addMethod(
-            getFixBugMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                HeartBeat.HeartbeatRequest,
-                HeartBeat.HeartbeatResponse>(
-                  this, METHODID_FIX_BUG)))
           .build();
     }
   }
@@ -177,14 +131,6 @@ public final class HeartBeatGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetRateMethod(), getCallOptions()), request, responseObserver);
     }
-
-    /**
-     */
-    public void fixBug(HeartBeat.HeartbeatRequest request,
-        io.grpc.stub.StreamObserver<HeartBeat.HeartbeatResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getFixBugMethod(), getCallOptions()), request, responseObserver);
-    }
   }
 
   /**
@@ -210,13 +156,6 @@ public final class HeartBeatGrpc {
     public HeartBeat.HeartbeatResponse getRate(HeartBeat.HeartbeatRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetRateMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public HeartBeat.HeartbeatResponse fixBug(HeartBeat.HeartbeatRequest request) {
-      return blockingUnaryCall(
-          getChannel(), getFixBugMethod(), getCallOptions(), request);
     }
   }
 
@@ -245,18 +184,9 @@ public final class HeartBeatGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetRateMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<HeartBeat.HeartbeatResponse> fixBug(
-        HeartBeat.HeartbeatRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getFixBugMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_GET_RATE = 0;
-  private static final int METHODID_FIX_BUG = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -277,10 +207,6 @@ public final class HeartBeatGrpc {
       switch (methodId) {
         case METHODID_GET_RATE:
           serviceImpl.getRate((HeartBeat.HeartbeatRequest) request,
-              (io.grpc.stub.StreamObserver<HeartBeat.HeartbeatResponse>) responseObserver);
-          break;
-        case METHODID_FIX_BUG:
-          serviceImpl.fixBug((HeartBeat.HeartbeatRequest) request,
               (io.grpc.stub.StreamObserver<HeartBeat.HeartbeatResponse>) responseObserver);
           break;
         default:
@@ -345,7 +271,6 @@ public final class HeartBeatGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HeartBeatFileDescriptorSupplier())
               .addMethod(getGetRateMethod())
-              .addMethod(getFixBugMethod())
               .build();
         }
       }

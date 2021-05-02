@@ -19,7 +19,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
-    comments = "Source: WaringService.proto")
+    comments = "Source: WarningService.proto")
 public final class WarningServiceGrpc {
 
   private WarningServiceGrpc() {}
@@ -31,7 +31,7 @@ public final class WarningServiceGrpc {
       WarningService.WarningServiceResponse> getAlertMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Alert",
+      fullMethodName = SERVICE_NAME + '/' + "alert",
       requestType = WarningService.WarningServiceRequest.class,
       responseType = WarningService.WarningServiceResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
@@ -45,13 +45,13 @@ public final class WarningServiceGrpc {
               io.grpc.MethodDescriptor.<WarningService.WarningServiceRequest, WarningService.WarningServiceResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "WarningService.WarningService", "Alert"))
+                  "WarningService.WarningService", "alert"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   WarningService.WarningServiceRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   WarningService.WarningServiceResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new WarningServiceMethodDescriptorSupplier("Alert"))
+                  .setSchemaDescriptor(new WarningServiceMethodDescriptorSupplier("alert"))
                   .build();
           }
         }

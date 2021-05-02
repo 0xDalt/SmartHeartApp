@@ -60,67 +60,35 @@ public final class RecordingServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<RecordingService.PatientRecordsRequest,
-      RecordingService.PatientRecordsResponse> getGetPatientRecordsMethod;
+      RecordingService.PatientRecordsResponse> getGetRecordsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "getPatientRecords",
+      fullMethodName = SERVICE_NAME + '/' + "getRecords",
       requestType = RecordingService.PatientRecordsRequest.class,
       responseType = RecordingService.PatientRecordsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<RecordingService.PatientRecordsRequest,
-      RecordingService.PatientRecordsResponse> getGetPatientRecordsMethod() {
-    io.grpc.MethodDescriptor<RecordingService.PatientRecordsRequest, RecordingService.PatientRecordsResponse> getGetPatientRecordsMethod;
-    if ((getGetPatientRecordsMethod = RecordingServiceGrpc.getGetPatientRecordsMethod) == null) {
+      RecordingService.PatientRecordsResponse> getGetRecordsMethod() {
+    io.grpc.MethodDescriptor<RecordingService.PatientRecordsRequest, RecordingService.PatientRecordsResponse> getGetRecordsMethod;
+    if ((getGetRecordsMethod = RecordingServiceGrpc.getGetRecordsMethod) == null) {
       synchronized (RecordingServiceGrpc.class) {
-        if ((getGetPatientRecordsMethod = RecordingServiceGrpc.getGetPatientRecordsMethod) == null) {
-          RecordingServiceGrpc.getGetPatientRecordsMethod = getGetPatientRecordsMethod = 
+        if ((getGetRecordsMethod = RecordingServiceGrpc.getGetRecordsMethod) == null) {
+          RecordingServiceGrpc.getGetRecordsMethod = getGetRecordsMethod = 
               io.grpc.MethodDescriptor.<RecordingService.PatientRecordsRequest, RecordingService.PatientRecordsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "RecordingService.RecordingService", "getPatientRecords"))
+                  "RecordingService.RecordingService", "getRecords"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   RecordingService.PatientRecordsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   RecordingService.PatientRecordsResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new RecordingServiceMethodDescriptorSupplier("getPatientRecords"))
+                  .setSchemaDescriptor(new RecordingServiceMethodDescriptorSupplier("getRecords"))
                   .build();
           }
         }
      }
-     return getGetPatientRecordsMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<RecordingService.SetPatientBpmRequest,
-      RecordingService.PatientResponse> getSetBpmMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "setBpm",
-      requestType = RecordingService.SetPatientBpmRequest.class,
-      responseType = RecordingService.PatientResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<RecordingService.SetPatientBpmRequest,
-      RecordingService.PatientResponse> getSetBpmMethod() {
-    io.grpc.MethodDescriptor<RecordingService.SetPatientBpmRequest, RecordingService.PatientResponse> getSetBpmMethod;
-    if ((getSetBpmMethod = RecordingServiceGrpc.getSetBpmMethod) == null) {
-      synchronized (RecordingServiceGrpc.class) {
-        if ((getSetBpmMethod = RecordingServiceGrpc.getSetBpmMethod) == null) {
-          RecordingServiceGrpc.getSetBpmMethod = getSetBpmMethod = 
-              io.grpc.MethodDescriptor.<RecordingService.SetPatientBpmRequest, RecordingService.PatientResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "RecordingService.RecordingService", "setBpm"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  RecordingService.SetPatientBpmRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  RecordingService.PatientResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new RecordingServiceMethodDescriptorSupplier("setBpm"))
-                  .build();
-          }
-        }
-     }
-     return getSetBpmMethod;
+     return getGetRecordsMethod;
   }
 
   /**
@@ -152,7 +120,7 @@ public final class RecordingServiceGrpc {
 
     /**
      * <pre>
-     *Client side streaming
+     *server side streaming
      * </pre>
      */
     public void getMedicalRecords(RecordingService.MedicalRecordRequest request,
@@ -162,19 +130,9 @@ public final class RecordingServiceGrpc {
 
     /**
      */
-    public void getPatientRecords(RecordingService.PatientRecordsRequest request,
+    public void getRecords(RecordingService.PatientRecordsRequest request,
         io.grpc.stub.StreamObserver<RecordingService.PatientRecordsResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetPatientRecordsMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     *bpm and id from client side
-     * </pre>
-     */
-    public void setBpm(RecordingService.SetPatientBpmRequest request,
-        io.grpc.stub.StreamObserver<RecordingService.PatientResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getSetBpmMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getGetRecordsMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -187,19 +145,12 @@ public final class RecordingServiceGrpc {
                 RecordingService.MedicalRecordResponse>(
                   this, METHODID_GET_MEDICAL_RECORDS)))
           .addMethod(
-            getGetPatientRecordsMethod(),
+            getGetRecordsMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
                 RecordingService.PatientRecordsRequest,
                 RecordingService.PatientRecordsResponse>(
-                  this, METHODID_GET_PATIENT_RECORDS)))
-          .addMethod(
-            getSetBpmMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                RecordingService.SetPatientBpmRequest,
-                RecordingService.PatientResponse>(
-                  this, METHODID_SET_BPM)))
+                  this, METHODID_GET_RECORDS)))
           .build();
     }
   }
@@ -224,7 +175,7 @@ public final class RecordingServiceGrpc {
 
     /**
      * <pre>
-     *Client side streaming
+     *server side streaming
      * </pre>
      */
     public void getMedicalRecords(RecordingService.MedicalRecordRequest request,
@@ -235,21 +186,10 @@ public final class RecordingServiceGrpc {
 
     /**
      */
-    public void getPatientRecords(RecordingService.PatientRecordsRequest request,
+    public void getRecords(RecordingService.PatientRecordsRequest request,
         io.grpc.stub.StreamObserver<RecordingService.PatientRecordsResponse> responseObserver) {
       asyncServerStreamingCall(
-          getChannel().newCall(getGetPatientRecordsMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     *bpm and id from client side
-     * </pre>
-     */
-    public void setBpm(RecordingService.SetPatientBpmRequest request,
-        io.grpc.stub.StreamObserver<RecordingService.PatientResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getSetBpmMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetRecordsMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -273,7 +213,7 @@ public final class RecordingServiceGrpc {
 
     /**
      * <pre>
-     *Client side streaming
+     *server side streaming
      * </pre>
      */
     public java.util.Iterator<RecordingService.MedicalRecordResponse> getMedicalRecords(
@@ -284,20 +224,10 @@ public final class RecordingServiceGrpc {
 
     /**
      */
-    public java.util.Iterator<RecordingService.PatientRecordsResponse> getPatientRecords(
+    public java.util.Iterator<RecordingService.PatientRecordsResponse> getRecords(
         RecordingService.PatientRecordsRequest request) {
       return blockingServerStreamingCall(
-          getChannel(), getGetPatientRecordsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     *bpm and id from client side
-     * </pre>
-     */
-    public RecordingService.PatientResponse setBpm(RecordingService.SetPatientBpmRequest request) {
-      return blockingUnaryCall(
-          getChannel(), getSetBpmMethod(), getCallOptions(), request);
+          getChannel(), getGetRecordsMethod(), getCallOptions(), request);
     }
   }
 
@@ -318,22 +248,10 @@ public final class RecordingServiceGrpc {
         io.grpc.CallOptions callOptions) {
       return new RecordingServiceFutureStub(channel, callOptions);
     }
-
-    /**
-     * <pre>
-     *bpm and id from client side
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<RecordingService.PatientResponse> setBpm(
-        RecordingService.SetPatientBpmRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getSetBpmMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_GET_MEDICAL_RECORDS = 0;
-  private static final int METHODID_GET_PATIENT_RECORDS = 1;
-  private static final int METHODID_SET_BPM = 2;
+  private static final int METHODID_GET_RECORDS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -356,13 +274,9 @@ public final class RecordingServiceGrpc {
           serviceImpl.getMedicalRecords((RecordingService.MedicalRecordRequest) request,
               (io.grpc.stub.StreamObserver<RecordingService.MedicalRecordResponse>) responseObserver);
           break;
-        case METHODID_GET_PATIENT_RECORDS:
-          serviceImpl.getPatientRecords((RecordingService.PatientRecordsRequest) request,
+        case METHODID_GET_RECORDS:
+          serviceImpl.getRecords((RecordingService.PatientRecordsRequest) request,
               (io.grpc.stub.StreamObserver<RecordingService.PatientRecordsResponse>) responseObserver);
-          break;
-        case METHODID_SET_BPM:
-          serviceImpl.setBpm((RecordingService.SetPatientBpmRequest) request,
-              (io.grpc.stub.StreamObserver<RecordingService.PatientResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -426,8 +340,7 @@ public final class RecordingServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RecordingServiceFileDescriptorSupplier())
               .addMethod(getGetMedicalRecordsMethod())
-              .addMethod(getGetPatientRecordsMethod())
-              .addMethod(getSetBpmMethod())
+              .addMethod(getGetRecordsMethod())
               .build();
         }
       }

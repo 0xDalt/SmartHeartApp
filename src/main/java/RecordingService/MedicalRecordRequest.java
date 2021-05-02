@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private MedicalRecordRequest() {
-    patient_ = java.util.Collections.emptyList();
+    ids_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -43,13 +43,25 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
+          case 8: {
             if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-              patient_ = new java.util.ArrayList<RecordingService.Patient>();
+              ids_ = new java.util.ArrayList<java.lang.Integer>();
               mutable_bitField0_ |= 0x00000001;
             }
-            patient_.add(
-                input.readMessage(RecordingService.Patient.parser(), extensionRegistry));
+            ids_.add(input.readInt32());
+            break;
+          }
+          case 10: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
+              ids_ = new java.util.ArrayList<java.lang.Integer>();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              ids_.add(input.readInt32());
+            }
+            input.popLimit(limit);
             break;
           }
           default: {
@@ -68,7 +80,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-        patient_ = java.util.Collections.unmodifiableList(patient_);
+        ids_ = java.util.Collections.unmodifiableList(ids_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -87,60 +99,28 @@ private static final long serialVersionUID = 0L;
             RecordingService.MedicalRecordRequest.class, RecordingService.MedicalRecordRequest.Builder.class);
   }
 
-  public static final int PATIENT_FIELD_NUMBER = 1;
-  private java.util.List<RecordingService.Patient> patient_;
+  public static final int IDS_FIELD_NUMBER = 1;
+  private java.util.List<java.lang.Integer> ids_;
   /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
+   * <code>repeated int32 ids = 1;</code>
    */
-  public java.util.List<RecordingService.Patient> getPatientList() {
-    return patient_;
+  public java.util.List<java.lang.Integer>
+      getIdsList() {
+    return ids_;
   }
   /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
+   * <code>repeated int32 ids = 1;</code>
    */
-  public java.util.List<? extends RecordingService.PatientOrBuilder> 
-      getPatientOrBuilderList() {
-    return patient_;
+  public int getIdsCount() {
+    return ids_.size();
   }
   /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
+   * <code>repeated int32 ids = 1;</code>
    */
-  public int getPatientCount() {
-    return patient_.size();
+  public int getIds(int index) {
+    return ids_.get(index);
   }
-  /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
-   */
-  public RecordingService.Patient getPatient(int index) {
-    return patient_.get(index);
-  }
-  /**
-   * <pre>
-   *take risk level from patient
-   * </pre>
-   *
-   * <code>repeated .RecordingService.Patient patient = 1;</code>
-   */
-  public RecordingService.PatientOrBuilder getPatientOrBuilder(
-      int index) {
-    return patient_.get(index);
-  }
+  private int idsMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
@@ -156,8 +136,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < patient_.size(); i++) {
-      output.writeMessage(1, patient_.get(i));
+    getSerializedSize();
+    if (getIdsList().size() > 0) {
+      output.writeUInt32NoTag(10);
+      output.writeUInt32NoTag(idsMemoizedSerializedSize);
+    }
+    for (int i = 0; i < ids_.size(); i++) {
+      output.writeInt32NoTag(ids_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -168,9 +153,19 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < patient_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, patient_.get(i));
+    {
+      int dataSize = 0;
+      for (int i = 0; i < ids_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(ids_.get(i));
+      }
+      size += dataSize;
+      if (!getIdsList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      idsMemoizedSerializedSize = dataSize;
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -188,8 +183,8 @@ private static final long serialVersionUID = 0L;
     RecordingService.MedicalRecordRequest other = (RecordingService.MedicalRecordRequest) obj;
 
     boolean result = true;
-    result = result && getPatientList()
-        .equals(other.getPatientList());
+    result = result && getIdsList()
+        .equals(other.getIdsList());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -201,9 +196,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getPatientCount() > 0) {
-      hash = (37 * hash) + PATIENT_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientList().hashCode();
+    if (getIdsCount() > 0) {
+      hash = (37 * hash) + IDS_FIELD_NUMBER;
+      hash = (53 * hash) + getIdsList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -333,18 +328,13 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getPatientFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (patientBuilder_ == null) {
-        patient_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        patientBuilder_.clear();
-      }
+      ids_ = java.util.Collections.emptyList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -372,15 +362,11 @@ private static final long serialVersionUID = 0L;
     public RecordingService.MedicalRecordRequest buildPartial() {
       RecordingService.MedicalRecordRequest result = new RecordingService.MedicalRecordRequest(this);
       int from_bitField0_ = bitField0_;
-      if (patientBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          patient_ = java.util.Collections.unmodifiableList(patient_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.patient_ = patient_;
-      } else {
-        result.patient_ = patientBuilder_.build();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        ids_ = java.util.Collections.unmodifiableList(ids_);
+        bitField0_ = (bitField0_ & ~0x00000001);
       }
+      result.ids_ = ids_;
       onBuilt();
       return result;
     }
@@ -429,31 +415,15 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(RecordingService.MedicalRecordRequest other) {
       if (other == RecordingService.MedicalRecordRequest.getDefaultInstance()) return this;
-      if (patientBuilder_ == null) {
-        if (!other.patient_.isEmpty()) {
-          if (patient_.isEmpty()) {
-            patient_ = other.patient_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensurePatientIsMutable();
-            patient_.addAll(other.patient_);
-          }
-          onChanged();
+      if (!other.ids_.isEmpty()) {
+        if (ids_.isEmpty()) {
+          ids_ = other.ids_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureIdsIsMutable();
+          ids_.addAll(other.ids_);
         }
-      } else {
-        if (!other.patient_.isEmpty()) {
-          if (patientBuilder_.isEmpty()) {
-            patientBuilder_.dispose();
-            patientBuilder_ = null;
-            patient_ = other.patient_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            patientBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getPatientFieldBuilder() : null;
-          } else {
-            patientBuilder_.addAllMessages(other.patient_);
-          }
-        }
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -485,316 +455,70 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<RecordingService.Patient> patient_ =
-      java.util.Collections.emptyList();
-    private void ensurePatientIsMutable() {
+    private java.util.List<java.lang.Integer> ids_ = java.util.Collections.emptyList();
+    private void ensureIdsIsMutable() {
       if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-        patient_ = new java.util.ArrayList<RecordingService.Patient>(patient_);
+        ids_ = new java.util.ArrayList<java.lang.Integer>(ids_);
         bitField0_ |= 0x00000001;
        }
     }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        RecordingService.Patient, RecordingService.Patient.Builder, RecordingService.PatientOrBuilder> patientBuilder_;
-
     /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
+     * <code>repeated int32 ids = 1;</code>
      */
-    public java.util.List<RecordingService.Patient> getPatientList() {
-      if (patientBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(patient_);
-      } else {
-        return patientBuilder_.getMessageList();
-      }
+    public java.util.List<java.lang.Integer>
+        getIdsList() {
+      return java.util.Collections.unmodifiableList(ids_);
     }
     /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
+     * <code>repeated int32 ids = 1;</code>
      */
-    public int getPatientCount() {
-      if (patientBuilder_ == null) {
-        return patient_.size();
-      } else {
-        return patientBuilder_.getCount();
-      }
+    public int getIdsCount() {
+      return ids_.size();
     }
     /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
+     * <code>repeated int32 ids = 1;</code>
      */
-    public RecordingService.Patient getPatient(int index) {
-      if (patientBuilder_ == null) {
-        return patient_.get(index);
-      } else {
-        return patientBuilder_.getMessage(index);
-      }
+    public int getIds(int index) {
+      return ids_.get(index);
     }
     /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
+     * <code>repeated int32 ids = 1;</code>
      */
-    public Builder setPatient(
-        int index, RecordingService.Patient value) {
-      if (patientBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePatientIsMutable();
-        patient_.set(index, value);
-        onChanged();
-      } else {
-        patientBuilder_.setMessage(index, value);
-      }
+    public Builder setIds(
+        int index, int value) {
+      ensureIdsIsMutable();
+      ids_.set(index, value);
+      onChanged();
       return this;
     }
     /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
+     * <code>repeated int32 ids = 1;</code>
      */
-    public Builder setPatient(
-        int index, RecordingService.Patient.Builder builderForValue) {
-      if (patientBuilder_ == null) {
-        ensurePatientIsMutable();
-        patient_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        patientBuilder_.setMessage(index, builderForValue.build());
-      }
+    public Builder addIds(int value) {
+      ensureIdsIsMutable();
+      ids_.add(value);
+      onChanged();
       return this;
     }
     /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
+     * <code>repeated int32 ids = 1;</code>
      */
-    public Builder addPatient(RecordingService.Patient value) {
-      if (patientBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePatientIsMutable();
-        patient_.add(value);
-        onChanged();
-      } else {
-        patientBuilder_.addMessage(value);
-      }
+    public Builder addAllIds(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureIdsIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, ids_);
+      onChanged();
       return this;
     }
     /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
+     * <code>repeated int32 ids = 1;</code>
      */
-    public Builder addPatient(
-        int index, RecordingService.Patient value) {
-      if (patientBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePatientIsMutable();
-        patient_.add(index, value);
-        onChanged();
-      } else {
-        patientBuilder_.addMessage(index, value);
-      }
+    public Builder clearIds() {
+      ids_ = java.util.Collections.emptyList();
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
       return this;
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public Builder addPatient(
-        RecordingService.Patient.Builder builderForValue) {
-      if (patientBuilder_ == null) {
-        ensurePatientIsMutable();
-        patient_.add(builderForValue.build());
-        onChanged();
-      } else {
-        patientBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public Builder addPatient(
-        int index, RecordingService.Patient.Builder builderForValue) {
-      if (patientBuilder_ == null) {
-        ensurePatientIsMutable();
-        patient_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        patientBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public Builder addAllPatient(
-        java.lang.Iterable<? extends RecordingService.Patient> values) {
-      if (patientBuilder_ == null) {
-        ensurePatientIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, patient_);
-        onChanged();
-      } else {
-        patientBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public Builder clearPatient() {
-      if (patientBuilder_ == null) {
-        patient_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        patientBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public Builder removePatient(int index) {
-      if (patientBuilder_ == null) {
-        ensurePatientIsMutable();
-        patient_.remove(index);
-        onChanged();
-      } else {
-        patientBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public RecordingService.Patient.Builder getPatientBuilder(
-        int index) {
-      return getPatientFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public RecordingService.PatientOrBuilder getPatientOrBuilder(
-        int index) {
-      if (patientBuilder_ == null) {
-        return patient_.get(index);  } else {
-        return patientBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public java.util.List<? extends RecordingService.PatientOrBuilder> 
-         getPatientOrBuilderList() {
-      if (patientBuilder_ != null) {
-        return patientBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(patient_);
-      }
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public RecordingService.Patient.Builder addPatientBuilder() {
-      return getPatientFieldBuilder().addBuilder(
-          RecordingService.Patient.getDefaultInstance());
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public RecordingService.Patient.Builder addPatientBuilder(
-        int index) {
-      return getPatientFieldBuilder().addBuilder(
-          index, RecordingService.Patient.getDefaultInstance());
-    }
-    /**
-     * <pre>
-     *take risk level from patient
-     * </pre>
-     *
-     * <code>repeated .RecordingService.Patient patient = 1;</code>
-     */
-    public java.util.List<RecordingService.Patient.Builder> 
-         getPatientBuilderList() {
-      return getPatientFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        RecordingService.Patient, RecordingService.Patient.Builder, RecordingService.PatientOrBuilder> 
-        getPatientFieldBuilder() {
-      if (patientBuilder_ == null) {
-        patientBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            RecordingService.Patient, RecordingService.Patient.Builder, RecordingService.PatientOrBuilder>(
-                patient_,
-                ((bitField0_ & 0x00000001) == 0x00000001),
-                getParentForChildren(),
-                isClean());
-        patient_ = null;
-      }
-      return patientBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

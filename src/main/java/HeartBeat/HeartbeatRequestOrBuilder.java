@@ -8,17 +8,7 @@ public interface HeartbeatRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 currentRate = 1;</code>
+   * <code>int32 patientId = 1;</code>
    */
-  int getCurrentRate();
-
-  /**
-   * <code>int32 min = 2;</code>
-   */
-  int getMin();
-
-  /**
-   * <code>int32 max = 3;</code>
-   */
-  int getMax();
+  int getPatientId();
 }

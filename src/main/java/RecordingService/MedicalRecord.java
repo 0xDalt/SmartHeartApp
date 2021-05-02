@@ -18,7 +18,6 @@ private static final long serialVersionUID = 0L;
   private MedicalRecord() {
     id_ = 0;
     name_ = "";
-    doctorName_ = "";
   }
 
   @java.lang.Override
@@ -54,12 +53,6 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             name_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            doctorName_ = s;
             break;
           }
           default: {
@@ -137,40 +130,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DOCTORNAME_FIELD_NUMBER = 3;
-  private volatile java.lang.Object doctorName_;
-  /**
-   * <code>string DoctorName = 3;</code>
-   */
-  public java.lang.String getDoctorName() {
-    java.lang.Object ref = doctorName_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      doctorName_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string DoctorName = 3;</code>
-   */
-  public com.google.protobuf.ByteString
-      getDoctorNameBytes() {
-    java.lang.Object ref = doctorName_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      doctorName_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -191,9 +150,6 @@ private static final long serialVersionUID = 0L;
     if (!getNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
     }
-    if (!getDoctorNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, doctorName_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -209,9 +165,6 @@ private static final long serialVersionUID = 0L;
     }
     if (!getNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
-    }
-    if (!getDoctorNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, doctorName_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -233,8 +186,6 @@ private static final long serialVersionUID = 0L;
         == other.getId());
     result = result && getName()
         .equals(other.getName());
-    result = result && getDoctorName()
-        .equals(other.getDoctorName());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -250,8 +201,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getId();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + DOCTORNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getDoctorName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -389,8 +338,6 @@ private static final long serialVersionUID = 0L;
 
       name_ = "";
 
-      doctorName_ = "";
-
       return this;
     }
 
@@ -419,7 +366,6 @@ private static final long serialVersionUID = 0L;
       RecordingService.MedicalRecord result = new RecordingService.MedicalRecord(this);
       result.id_ = id_;
       result.name_ = name_;
-      result.doctorName_ = doctorName_;
       onBuilt();
       return result;
     }
@@ -473,10 +419,6 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
-        onChanged();
-      }
-      if (!other.getDoctorName().isEmpty()) {
-        doctorName_ = other.doctorName_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -599,75 +541,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       name_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object doctorName_ = "";
-    /**
-     * <code>string DoctorName = 3;</code>
-     */
-    public java.lang.String getDoctorName() {
-      java.lang.Object ref = doctorName_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        doctorName_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string DoctorName = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDoctorNameBytes() {
-      java.lang.Object ref = doctorName_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        doctorName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string DoctorName = 3;</code>
-     */
-    public Builder setDoctorName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      doctorName_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string DoctorName = 3;</code>
-     */
-    public Builder clearDoctorName() {
-      
-      doctorName_ = getDefaultInstance().getDoctorName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string DoctorName = 3;</code>
-     */
-    public Builder setDoctorNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      doctorName_ = value;
       onChanged();
       return this;
     }

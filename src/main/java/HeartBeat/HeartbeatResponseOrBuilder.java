@@ -8,16 +8,16 @@ public interface HeartbeatResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+   * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
    */
   int getStatusValue();
   /**
-   * <code>.HeartBeat.HeartbeatResponse.Status status = 3;</code>
+   * <code>.HeartBeat.HeartbeatResponse.Status status = 1;</code>
    */
   HeartBeat.HeartbeatResponse.Status getStatus();
 
   /**
-   * <code>int32 bpm = 4;</code>
+   * <code>int32 bpm = 2;</code>
    */
   int getBpm();
 }

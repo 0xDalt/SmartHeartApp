@@ -8,7 +8,12 @@ public interface PatientRecordsRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 id = 1;</code>
+   * <code>int32 min_bpm = 1;</code>
    */
-  int getId();
+  int getMinBpm();
+
+  /**
+   * <code>int32 max_bpm = 2;</code>
+   */
+  int getMaxBpm();
 }
